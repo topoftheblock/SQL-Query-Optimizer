@@ -55,7 +55,8 @@ Cost-Based Optimizer → Physical Plan
 
 
 📊 Example: Query Optimization
- Copysql = "SELECT * FROM users WHERE age > 25 AND country = 'USA'"
+
+Copysql = "SELECT * FROM users WHERE age > 25 AND country = 'USA'"
 plan = optimizer.optimize(sql)
 print(plan.root)
 Advanced Example
