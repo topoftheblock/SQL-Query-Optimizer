@@ -1,9 +1,11 @@
 # SQL Query Optimizer
 
-**A sophisticated SQL query optimizer implementing cost-based and heuristic optimization techniques used in modern database systems.**
+*A sophisticated SQL query optimizer implementing cost-based and heuristic optimization techniques used in modern database systems.*
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+---
 
 ## 🚀 Features
 
@@ -11,7 +13,9 @@
 - **Cost-Based Optimization**: Statistical analysis and cost estimation
 - **Multiple Join Algorithms**: Nested loop, hash join, merge join support
 - **Visual Query Plans**: Automatic visualization of optimization steps
-- **Comprehensive SQL Support**: SELECT, JOIN, WHERE, GROUP BY, ORDER BY, LIMIT
+- **Comprehensive SQL Support**: `SELECT`, `JOIN`, `WHERE`, `GROUP BY`, `ORDER BY`, `LIMIT`
+
+---
 
 ## 📋 Quick Start
 
@@ -19,7 +23,8 @@
 
 ```bash
 pip install sql-query-optimizer
-from sql_query_optimizer import QueryOptimizer
+Usage
+ Copyfrom sql_query_optimizer import QueryOptimizer
 from sql_query_optimizer.core import StatisticsProvider
 
 # Create statistics for your tables
@@ -32,27 +37,36 @@ optimizer = QueryOptimizer(stats_provider)
 
 # Optimize a SQL query
 sql = """
-SELECT users.name, orders.total 
-FROM users 
-JOIN orders ON users.id = orders.user_id 
+SELECT users.name, orders.total
+FROM users
+JOIN orders ON users.id = orders.user_id
 WHERE users.age > 30 AND orders.amount > 100
 """
 
 result = optimizer.optimize(sql)
 print(f"Optimized plan cost: {result.root.estimated_cost:.2f}")
 
-SQL Query → Parser → Logical Plan → Heuristic Optimizer → Cost-Based Optimizer → Physical Plan
+🔍 Optimization Pipeline
 
-sql = "SELECT * FROM users WHERE age > 25 AND country = 'USA'"
+SQL Query → Parser → Logical Plan
+Logical Plan → Heuristic Optimizer
+Heuristic Optimizer → Cost-Based Optimizer
+Cost-Based Optimizer → Physical Plan
+
+
+📊 Example: Query Optimization
+ Copysql = "SELECT * FROM users WHERE age > 25 AND country = 'USA'"
 plan = optimizer.optimize(sql)
 print(plan.root)
-
-sql = """
-SELECT u.name, o.total 
-FROM users u 
-JOIN orders o ON u.id = o.user_id 
+Advanced Example
+ Copysql = """
+SELECT u.name, o.total
+FROM users u
+JOIN orders o ON u.id = o.user_id
 WHERE u.age > 30 AND o.amount > 50
 """
-
 explanation = optimizer.explain(sql)
 print(f"Cost improvement: {explanation['improvement_percent']}%")
+
+📄 License
+This project is licensed under the MIT License – see the LICENSE file for details.
