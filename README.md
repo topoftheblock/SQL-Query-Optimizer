@@ -26,7 +26,7 @@ pip install sql-query-optimizer
 Usage
  Copyfrom sql_query_optimizer import QueryOptimizer
 from sql_query_optimizer.core import StatisticsProvider
-
+---
 # Create statistics for your tables
 stats_provider = StatisticsProvider()
 stats_provider.add_table_stats('users', row_count=10000, distinct_count=5000)
